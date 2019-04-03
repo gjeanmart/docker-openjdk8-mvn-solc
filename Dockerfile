@@ -1,6 +1,5 @@
 FROM nimmis/ubuntu:16.04
 MAINTAINER Gregoire Jeanmart <gregoire.jeanmart@consensys.net>
-LABEL version="0.0.1"
 
 # disable interactive functions
 ENV DEBIAN_FRONTEND noninteractive
@@ -9,7 +8,7 @@ USER root
 
 # Install java
 ENV JAVA_VERSION_MAJOR=8 \
-    JAVA_VERSION_MINOR=151 \
+    JAVA_VERSION_MINOR=201 \
     JAVA_HOME=/usr/lib/jvm/default-jvm \
     PATH=${PATH}:/usr/lib/jvm/default-jvm/bin/
 
@@ -45,6 +44,11 @@ RUN add-apt-repository ppa:ethereum/ethereum && \
 
     # remove apt cache from image
 	apt-get clean all
+
+
+# Install git
+
+RUN apt-get install -y git
 
 
 # Install Maven
